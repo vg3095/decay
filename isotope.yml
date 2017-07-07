@@ -26,8 +26,6 @@ model:
         S: 0.19
         Ar: 0.04
         Ca: 0.03
-    isotope_abundances:
-        type: uniform
         Ni56: 0.5
         Ni58: 0.5
 
