@@ -20,7 +20,7 @@ model:
 
     abundances:
         type: file
-        filename: abund.dat
+        filename: iso_abund.csv
         filetype: isotopes
 
 
