@@ -21,7 +21,7 @@ model:
     abundances:
         type: file
         filename: iso_abund.csv
-        filetype: isotopes
+        filetype: tardis_model
 
 
 plasma:
