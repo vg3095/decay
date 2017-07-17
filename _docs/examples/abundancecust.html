@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Using a custom stratified composition &mdash; TARDIS v1.5.dev2799</title>
+  <title>Using a custom stratified composition &mdash; TARDIS v1.5.dev2802</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="TARDIS v1.5.dev2799" href="../index.html"/> 
+    <link rel="top" title="TARDIS v1.5.dev2802" href="../index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                1.5.dev2799
+                1.5.dev2802
               </div>
             
           
@@ -271,14 +271,16 @@ work on a mesh with ten cells should be formatted like this:</p>
 <table border="1" class="docutils" id="id1">
 <caption><span class="caption-text">Example</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
-<col width="20%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">C</th>
+<th class="head">O</th>
 <th class="head">Mg</th>
 <th class="head">Si</th>
 <th class="head">Ni56</th>
@@ -288,59 +290,69 @@ work on a mesh with ten cells should be formatted like this:</p>
 <tbody valign="top">
 <tr class="row-even"><td>0</td>
 <td>0</td>
-<td>0.1</td>
-<td>0.1</td>
-<td>0</td>
-</tr>
-<tr class="row-odd"><td>0</td>
-<td>0</td>
-<td>0.1</td>
-<td>0.1</td>
-<td>0</td>
-</tr>
-<tr class="row-even"><td>0</td>
-<td>0</td>
-<td>0.1</td>
-<td>0</td>
-<td>0.1</td>
-</tr>
-<tr class="row-odd"><td>0</td>
-<td>0.1</td>
-<td>0.2</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="row-even"><td>0</td>
-<td>0.1</td>
-<td>0.2</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="row-odd"><td>0</td>
-<td>0.1</td>
-<td>0.2</td>
-<td>0</td>
-<td>0.1</td>
-</tr>
-<tr class="row-even"><td>0</td>
-<td>0.1</td>
-<td>0.2</td>
 <td>0</td>
 <td>0.6</td>
+<td>0.4</td>
+<td>0</td>
 </tr>
 <tr class="row-odd"><td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0.1</td>
+<td>0.5</td>
+<td>0.4</td>
+</tr>
+<tr class="row-even"><td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.3</td>
+<td>0</td>
+<td>0.7</td>
+</tr>
+<tr class="row-odd"><td>0</td>
 <td>0.2</td>
+<td>0.8</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>0</td>
+<td>0.3</td>
+<td>0.7</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>0</td>
+<td>0.2</td>
+<td>0.8</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>0</td>
+<td>0.2</td>
+<td>0.8</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>0</td>
+<td>0.2</td>
+<td>0.8</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr class="row-even"><td>0.5</td>
+<td>0.5</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr class="row-odd"><td>0.5</td>
+<td>0.5</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -359,9 +371,15 @@ the TARDIS calculations.</p>
 <p>The example file shown here has three simple layers:</p>
 <ul class="simple">
 <li>an innermost region that is composed of Si and two Nickel Isotopes Ni56 and Ni58</li>
-<li>a middle region that is composed of Mg</li>
-<li>an outer region that is composed of C.</li>
+<li>a middle region that is composed of O and Mg</li>
+<li>an outer region that is composed of C and O.</li>
 </ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Suppose you specify Elemental and Isotopic abundances for the same element. For ex-
+<code class="code docutils literal"><span class="pre">Ni</span></code> and <code class="code docutils literal"><span class="pre">Ni56</span></code>.
+Here, Ni will refer to the stable Nickel, i.e. (Z=26, A=58).</p>
+</div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">The example given here is to show the format only. It is not a
@@ -388,7 +406,7 @@ the model section of the yaml file:</p>
 <code class="code docutils literal"><span class="pre">convert_abundances_format</span></code> function for it. Here is an example to demonstrate this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tardis.util</span> <span class="kn">import</span> <span class="n">convert_abundances_format</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">convert_abundances_format</span><span class="p">(</span><span class="s1">&#39;abund.dat&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;converted_abund.csv&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;converted_abund.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -429,7 +447,7 @@ the model section of the yaml file:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'1.5.dev2799',
+            VERSION:'1.5.dev2802',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Using a uniform composition &mdash; TARDIS v1.5.dev2799</title>
+  <title>Using a uniform composition &mdash; TARDIS v1.5.dev2802</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="TARDIS v1.5.dev2799" href="../index.html"/> 
+    <link rel="top" title="TARDIS v1.5.dev2802" href="../index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                1.5.dev2799
+                1.5.dev2802
               </div>
             
           
@@ -206,10 +206,19 @@ section, following the &#8220;type: uniform&#8221; specifier (see example input
 file below). They are specified as mass fractions. E.g.</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>Si: 0.6
 S: 0.2
-Ni58: 0.2
+Ni56: 0.2
 </pre></div>
 </div>
-<p>will set the mass fraction of silicon (Z=14) to 0.6, sulphur (Z=16) to 0.2 and Nickel(Z=26, A=58) to 0.2.</p>
+<p>will set the mass fraction of silicon (Z=14) to 0.6, sulphur (Z=16) to 0.2 and Nickel(Z=26, A=56) to 0.2.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Suppose you specify Elemental and Isotopic abundance for the same element. For ex-</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>Ni: 0.8
+Ni56: 0.2
+</pre></div>
+</div>
+<p class="last">Here, Ni will refer to the stable Nickel, i.e. (Z=26, A=58).</p>
+</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The mass fractions must sum to one. If mass fractions are supplied that do not sum to one, TARDIS will
@@ -229,8 +238,8 @@ which specifies a uniform ejecta composition;</p>
         <span class="l l-Scalar l-Scalar-Plain">S</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.19</span>
         <span class="l l-Scalar l-Scalar-Plain">Ar</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.02</span>
         <span class="l l-Scalar l-Scalar-Plain">Ca</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.03</span>
-        <span class="l l-Scalar l-Scalar-Plain">Ni58</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.01</span>
         <span class="l l-Scalar l-Scalar-Plain">Ni56</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.01</span>
+        <span class="l l-Scalar l-Scalar-Plain">Ni58</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.01</span>
 </pre></div>
 </div>
 </div>
@@ -271,7 +280,7 @@ which specifies a uniform ejecta composition;</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'1.5.dev2799',
+            VERSION:'1.5.dev2802',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
