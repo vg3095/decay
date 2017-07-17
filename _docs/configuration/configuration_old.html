@@ -1,0 +1,495 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configuration File &mdash; TARDIS v1.5.dev2799</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/tardis_logo.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="TARDIS v1.5.dev2799" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TARDIS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5.dev2799
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Configuration File</a><ul>
+<li><a class="reference internal" href="#plasma">Plasma</a></li>
+<li><a class="reference internal" href="#model">Model</a></li>
+<li><a class="reference internal" href="#montecarlo">MonteCarlo</a></li>
+<li><a class="reference internal" href="#spectrum">Spectrum</a></li>
+<li><a class="reference internal" href="#config-reader">Config Reader</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TARDIS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Configuration File</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/configuration/configuration_old.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+/* nice headers on first paragraph of info/warning boxes */
+.admonition .first {
+    margin: -12px;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    color: #fff;
+    line-height: 1;
+    display: block;
+}
+.admonition.warning .first {
+    background: #f0b37e;
+}
+.admonition.note .first {
+    background: #6ab0de;
+}
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<div class="section" id="configuration-file">
+<span id="config-file"></span><h1>Configuration File<a class="headerlink" href="#configuration-file" title="Permalink to this headline">¶</a></h1>
+<p>TARDIS uses the <a class="reference external" href="https://en.wikipedia.org/wiki/YAML">YAML markup language</a>
+for its configuration files. There are several sections which allow different
+settings for the different aspects of the TARDIS calculation. An example
+configuration file can be downloaded <a class="reference download internal" href="../_downloads/tardis_example.yml" download=""><code class="xref download docutils literal"><span class="pre">here</span></code></a>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">One should note that currently floats in YAML need to be specified in a special format:
+any pure floats need to have a +/- after the e e.g. 2e+5</p>
+</div>
+<p>Every configuration file begins with the most basic settings for the model:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="c1">#Currently only simple1d is allowed</span>
+<span class="l l-Scalar l-Scalar-Plain">config_type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">simple1d</span>
+
+<span class="c1">#luminosity any astropy.unit convertible to erg/s</span>
+<span class="c1">#special unit log_lsun(log(luminosity) - log(L_sun)</span>
+<span class="l l-Scalar l-Scalar-Plain">luminosity</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">9.44 log_lsun</span>
+
+<span class="c1">#time since explosion</span>
+<span class="l l-Scalar l-Scalar-Plain">time_explosion</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">13 day</span>
+
+<span class="l l-Scalar l-Scalar-Plain">atom_data</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">../atom_data/kurucz_atom_chianti_many.h5</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">config_type</span></code> currently only allows <code class="docutils literal"><span class="pre">simple1d</span></code>, but might be expanded in future versions of TARDIS. Many
+parameters in the TARDIS configuration files make use of units. One can use any unit that is supported by
+<a class="reference external" href="http://docs.astropy.org/en/stable/units/index.html">astropy units</a> as well as the unit <code class="docutils literal"><span class="pre">log_lsun</span></code>
+which is <span class="math">\(\log(L) - \log(L_\odot)\)</span>. Time since explosion just takes a normal time quantity. <code class="docutils literal"><span class="pre">atom_data</span></code> requires
+the path to the HDF5 file that contains the atomic data (more information about the HDF5 file can be found
+here <span class="xref std std-ref">atomic-data</span>).</p>
+<div class="section" id="plasma">
+<h2>Plasma<a class="headerlink" href="#plasma" title="Permalink to this headline">¶</a></h2>
+<p>The next configuration block describes the plasma parameters:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">plasma</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">initial_t_inner</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10000 K</span>
+    <span class="l l-Scalar l-Scalar-Plain">initial_t_rad</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10000 K</span>
+    <span class="l l-Scalar l-Scalar-Plain">disable_electron_scattering</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span>
+    <span class="l l-Scalar l-Scalar-Plain">plasma_type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">nebular</span>
+    <span class="c1">#radiative_rates_type - currently supported are lte, nebular and detailed</span>
+    <span class="l l-Scalar l-Scalar-Plain">radiative_rates_type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">detailed</span>
+    <span class="c1">#line interaction type - currently supported are scatter, downbranch and macroatom</span>
+    <span class="l l-Scalar l-Scalar-Plain">line_interaction_type</span> <span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">macroatom</span>
+    <span class="l l-Scalar l-Scalar-Plain">w_epsilon</span> <span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0e-10</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">inital_t_inner</span></code> is temperature of the black-body on the inner boundary. <code class="docutils literal"><span class="pre">initial_t_rad</span></code> is the
+radiation temperature for all cells. For debugging purposes and to compare to <a class="reference internal" href="../glossary.html#term-synapps"><span class="xref std std-term">synapps</span></a> calculations one can
+disable the electron scattering. TARDIS will issue a warning that this is not physical.
+There are currently two <code class="docutils literal"><span class="pre">plasma_type</span></code> options available: <code class="docutils literal"><span class="pre">nebular</span></code> and <code class="docutils literal"><span class="pre">lte</span></code> which tell TARDIS how to run the
+ionization equilibrium and level population calculations (see <a class="reference internal" href="../physics/plasma.html#plasmas"><span class="std std-ref">Plasma</span></a> for more information).
+The radiative rates describe how to calculate the <span class="math">\(J_\textrm{blue}\)</span> needed for the <span class="xref std std-ref">nlte</span> calculations and
+<span class="xref std std-ref">macroatom</span> calculations. There are three options for <code class="docutils literal"><span class="pre">radiative_rates_type</span></code>: 1) <code class="docutils literal"><span class="pre">lte</span></code> in which
+<span class="math">\(J_\textrm{blue} = \textrm{Blackbody}(T_\textrm{rad})\)</span>, 2) <code class="docutils literal"><span class="pre">nebular</span></code> in which
+<span class="math">\(J_\textrm{blue} = W \times \textrm{Blackbody}(T_\textrm{rad})\)</span>, 3) <code class="docutils literal"><span class="pre">detailed</span></code> in which the <span class="math">\(J_\textrm{blue}\)</span>
+are calculated using an estimator (this is described in ??????).</p>
+<p>TARDIS currently supports three different kinds of line interaction: <code class="docutils literal"><span class="pre">scatter</span></code> - a resonance scattering implementation,
+<code class="docutils literal"><span class="pre">macroatom</span></code> - the most complex form of line interaction described in <span class="xref std std-ref">macroatom</span> and <code class="docutils literal"><span class="pre">downbranch</span></code> a simplified
+version of <code class="docutils literal"><span class="pre">macroatom</span></code> in which only downward transitions are allowed.</p>
+<p>Finally, <code class="docutils literal"><span class="pre">w_epsilon</span></code> describes the dilution factor to use to calculate <span class="math">\(J_\textrm{blue}\)</span> that are 0, which
+causes problem with the code (so <span class="math">\(J_\textrm{blue}\)</span> are set to a very small number).</p>
+<p><strong>NLTE</strong>:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">nlte</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">coronal_approximation</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+    <span class="l l-Scalar l-Scalar-Plain">classical_nebular</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+</pre></div>
+</div>
+<p>The NLTE configuration currently allows setting <code class="docutils literal"><span class="pre">coronal_approximation</span></code> which sets all <span class="math">\(J_\textrm{blue}\)</span> to 0.
+This is useful for debugging with <span class="xref std std-term">chianti</span> for example. Furthermore one can enable &#8216;classical_nebular&#8217; to set all
+<span class="math">\(\beta_\textrm{Sobolev}\)</span> to 1. Both options are used for checking with other codes and should not be enabled in
+normal operations.</p>
+</div>
+<div class="section" id="model">
+<h2>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h2>
+<p>The next sections, describing the model, are very hierarchical. The base level is <code class="docutils literal"><span class="pre">model</span></code> and contains two subsections:
+<code class="docutils literal"><span class="pre">structure</span></code> and <code class="docutils literal"><span class="pre">abundances</span></code>. Both sections can either contain a <code class="docutils literal"><span class="pre">file</span></code> subsection which specifies a file and
+file type where the information is stored or a number of other sections.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">model</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">structure</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">no_of_shells</span> <span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
+
+        <span class="l l-Scalar l-Scalar-Plain">velocity</span><span class="p p-Indicator">:</span>
+            <span class="l l-Scalar l-Scalar-Plain">type</span> <span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">linear</span>
+            <span class="l l-Scalar l-Scalar-Plain">v_inner</span> <span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1.1e4 km/s</span>
+            <span class="l l-Scalar l-Scalar-Plain">v_outer</span> <span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">2e4 km/s</span>
+
+
+        <span class="l l-Scalar l-Scalar-Plain">density</span><span class="p p-Indicator">:</span>
+            <span class="c1">#showing different configuration options separated by comments</span>
+            <span class="c1">#simple uniform:</span>
+            <span class="c1">#---------------</span>
+<span class="c1">#            type : uniform</span>
+<span class="c1">#            value : 1e-12 g/cm^3</span>
+            <span class="c1">#---------------</span>
+
+            <span class="c1">#branch85_w7 - fit of seven order polynomial to W7 (like Branch 85):</span>
+            <span class="c1">#---------------</span>
+            <span class="l l-Scalar l-Scalar-Plain">type</span> <span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">branch85_w7</span>
+            <span class="c1">#value : 1e-12</span>
+            <span class="c1"># default, no need to change!</span>
+            <span class="c1">#time_0 : 19.9999584 s</span>
+            <span class="c1"># default, no need to change!</span>
+            <span class="c1">#density_coefficient : 3e29</span>
+            <span class="c1">#---------------</span>
+
+
+<span class="c1">#        file:</span>
+<span class="c1">#            type : artis</span>
+<span class="c1">#            name : artis_model.dat</span>
+<span class="c1">#            v_lowest: 10000.0 km/s</span>
+<span class="c1">#            v_highest: 20000.0 km/s</span>
+</pre></div>
+</div>
+<p>In the <code class="docutils literal"><span class="pre">structure</span></code> section, one can specify a <code class="docutils literal"><span class="pre">file</span></code> section containing a <code class="docutils literal"><span class="pre">type</span></code> parameter
+(currently only <code class="docutils literal"><span class="pre">artis</span></code> is supported``) and a <code class="docutils literal"><span class="pre">name</span></code> parameter giving a path top a file. For the <code class="docutils literal"><span class="pre">artis</span></code> type,
+one can specify the inner and outermost shell by giving a <code class="docutils literal"><span class="pre">v_lowest</span></code> and <code class="docutils literal"><span class="pre">v_highest</span></code> parameter. This will result in
+the selection of certain shells which will be obeyed in the abundance section as well if <code class="docutils literal"><span class="pre">artis</span></code> is selected there as
+well.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If a <code class="docutils literal"><span class="pre">file</span></code> section is given, all other parameters and sections in the <code class="docutils literal"><span class="pre">structure</span></code> section are ignored!</p>
+</div>
+<p>If one doesn&#8217;t specify a <code class="docutils literal"><span class="pre">file</span></code> section, the code requires two sections (<code class="docutils literal"><span class="pre">velocities</span></code> and <code class="docutils literal"><span class="pre">densities</span></code>) and a
+parameter <code class="docutils literal"><span class="pre">no_of_shells</span></code>. <code class="docutils literal"><span class="pre">no_of_shells</span></code> is the requested number of shells for a model. The <code class="docutils literal"><span class="pre">velocity</span></code> section
+requires a <code class="docutils literal"><span class="pre">type</span></code>. Currently, only <code class="docutils literal"><span class="pre">linear</span></code> is supported and needs two parameters <code class="docutils literal"><span class="pre">v_inner</span></code> and <code class="docutils literal"><span class="pre">v_outer</span></code> with
+velocity values for the inner most and outer most shell.</p>
+<dl class="docutils">
+<dt>In the <code class="docutils literal"><span class="pre">densities</span></code> section the <code class="docutils literal"><span class="pre">type</span></code> parameter again decides on the parameters. The type <code class="docutils literal"><span class="pre">uniform</span></code> only needs a</dt>
+<dd><code class="docutils literal"><span class="pre">value</span></code> parameter with a density compatible quantity. The type <code class="docutils literal"><span class="pre">branch85_w7</span></code> uses a seven order polynomial fit to
+the W7 model and is parametrised by time since explosion. The parameters <code class="docutils literal"><span class="pre">time_0</span></code> and <code class="docutils literal"><span class="pre">density_coefficient</span></code> are set
+to sensible defaults and should not be changed.</dd>
+</dl>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1">#-- continued from model block before --</span>
+    <span class="l l-Scalar l-Scalar-Plain">abundances</span><span class="p p-Indicator">:</span>
+        <span class="c1">#file:</span>
+        <span class="c1">#    type : artis</span>
+        <span class="c1">#    name : artis_abundances.dat</span>
+
+        <span class="l l-Scalar l-Scalar-Plain">nlte_species</span> <span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="nv">Si2</span><span class="p p-Indicator">]</span>
+        <span class="l l-Scalar l-Scalar-Plain">C</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.01</span>
+        <span class="l l-Scalar l-Scalar-Plain">O</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.01</span>
+        <span class="l l-Scalar l-Scalar-Plain">Ne</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.01</span>
+        <span class="l l-Scalar l-Scalar-Plain">Mg</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.01</span>
+        <span class="l l-Scalar l-Scalar-Plain">Si</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.45</span>
+        <span class="l l-Scalar l-Scalar-Plain">S</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.35</span>
+        <span class="l l-Scalar l-Scalar-Plain">Ar</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.04</span>
+        <span class="l l-Scalar l-Scalar-Plain">Ca</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.03</span>
+        <span class="l l-Scalar l-Scalar-Plain">Fe</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.07</span>
+        <span class="l l-Scalar l-Scalar-Plain">Co</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.01</span>
+        <span class="l l-Scalar l-Scalar-Plain">Ni</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.01</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">abundance</span></code> section again has a possible <code class="docutils literal"><span class="pre">file</span></code> parameter with <code class="docutils literal"><span class="pre">type</span></code> (currently only <code class="docutils literal"><span class="pre">artis</span></code> is allowed)
+and a <code class="docutils literal"><span class="pre">name</span></code> parameter giving a path to a file containing the abundance information.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">In contrast to the <code class="docutils literal"><span class="pre">structure</span></code> section, the <code class="docutils literal"><span class="pre">abundance</span></code> section will not ignore abundances set in the rest of
+the section, but merely will overwrite the abundances given in the file section.</p>
+</div>
+<p>In this section we also specify the species that will be calculated with our <span class="xref std std-ref">nlte</span> formalism using the
+<code class="docutils literal"><span class="pre">nlte_species</span></code> parameter (they are specified in a list using astrophysical notation, e.g. [Si2, Ca2, Mg2, H1]).
+The rest of the section can be used to configure uniform abundances for all shells, by giving the atom name and a
+relative abundance fraction. If it does not add up to 1., TARDIS will warn - but normalize the numbers.</p>
+</div>
+<div class="section" id="montecarlo">
+<h2>MonteCarlo<a class="headerlink" href="#montecarlo" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">montecarlo</span></code> section describes the parameters for the MonteCarlo radiation transport and convergence criteria:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">montecarlo</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">seed</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">23111963171620</span>
+    <span class="l l-Scalar l-Scalar-Plain">no_of_packets</span> <span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">2.e+4</span>
+    <span class="l l-Scalar l-Scalar-Plain">iterations</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">100</span>
+
+    <span class="l l-Scalar l-Scalar-Plain">convergence_criteria</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">specific</span>
+        <span class="l l-Scalar l-Scalar-Plain">damping_constant</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
+        <span class="l l-Scalar l-Scalar-Plain">threshold</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
+        <span class="l l-Scalar l-Scalar-Plain">fraction</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.8</span>
+        <span class="l l-Scalar l-Scalar-Plain">hold</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
+
+<span class="c1">#    convergence_criteria:</span>
+<span class="c1">#        type: damped</span>
+<span class="c1">#        damping_constant: 0.5</span>
+<span class="c1">#        t_inner:</span>
+<span class="c1">#            damping_constant: 0.7</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">seed</span></code> parameter seeds the random number generator first for the creation of the packets
+(<span class="math">\(\nu\)</span> and <span class="math">\(\mu\)</span>) and then the interactions in the actual MonteCarlo process.
+The <code class="docutils literal"><span class="pre">no_of_packets</span></code> parameter can take a float number for input convenience and gives the number of packets normally
+used in each MonteCarlo loop. The parameters <code class="docutils literal"><span class="pre">last_no_of_packets</span></code> and <code class="docutils literal"><span class="pre">no_of_virtual_packets</span></code> influence the last run
+of the MonteCarlo loop when the radiation field should have converged. <code class="docutils literal"><span class="pre">last_no_of_packets</span></code> is normally higher than
+<code class="docutils literal"><span class="pre">no_of_packets</span></code> to create a less noisy output spectrum. <code class="docutils literal"><span class="pre">no_of_virtual_packets</span></code> can also be set to greater than 0 to
+use the Virtual Packet formalism (reference missing ?????). The <code class="docutils literal"><span class="pre">iterations</span></code> parameter describes the maximum number of
+MonteCarlo loops executed in a simulation before it ends. Convergence criteria can be used to make the simulation stop
+sooner when the convergence threshold has been reached.</p>
+<p>The <code class="docutils literal"><span class="pre">convergence_criteria</span></code> section again has a <code class="docutils literal"><span class="pre">type</span></code> keyword. Two types are allowed: <code class="docutils literal"><span class="pre">damped</span></code> and <code class="docutils literal"><span class="pre">specific</span></code>.
+All convergence criteria can be specified separately for the three variables for which convergence can be checked
+(<code class="docutils literal"><span class="pre">t_inner</span></code>, <code class="docutils literal"><span class="pre">t_rad</span></code>, <code class="docutils literal"><span class="pre">ws</span></code>) by specifying subsections in the <code class="docutils literal"><span class="pre">convergence_criteria</span></code> of the same name. These
+override then the defaults.</p>
+<ol class="arabic simple">
+<li><code class="docutils literal"><span class="pre">damped</span></code> only has one parameter <code class="docutils literal"><span class="pre">damping-constant</span></code> and does not check for convergence.</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">specific</span></code> checks for the convergence threshold specified in <code class="docutils literal"><span class="pre">threshold</span></code>. For <code class="docutils literal"><span class="pre">t_rad</span></code> and <code class="docutils literal"><span class="pre">w</span></code> only a given</dt>
+<dd>fraction (specified in <code class="docutils literal"><span class="pre">fraction</span></code>) has to cross the <code class="docutils literal"><span class="pre">threshold</span></code>. Once a convergence  threshold is read, the simulation
+needs to hold this state for <code class="docutils literal"><span class="pre">hold</span></code> number of iterations.</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="spectrum">
+<h2>Spectrum<a class="headerlink" href="#spectrum" title="Permalink to this headline">¶</a></h2>
+<p>The spectrum section defines the</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">spectrum</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">start</span> <span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">500 angstrom</span>
+    <span class="l l-Scalar l-Scalar-Plain">end</span> <span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">20000 angstrom</span>
+    <span class="l l-Scalar l-Scalar-Plain">bins</span> <span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1000</span>
+    <span class="l l-Scalar l-Scalar-Plain">sn_distance</span> <span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">lum_density</span>
+    <span class="c1">#sn_distance : 10 Mpc</span>
+</pre></div>
+</div>
+<p>Start and end are given as Quantities with units. If they are given in frequency space they are switched around if
+necessary. The number of bins is just an integer. Finally the <code class="docutils literal"><span class="pre">sn_distance</span></code> can either be a distance or the special
+parameter <code class="docutils literal"><span class="pre">lum_density</span></code> which sets the distance to <span class="math">\(\sqrt{\frac{1}{4 \pi}}\)</span> to calculate the luminosity density.</p>
+</div>
+<div class="section" id="config-reader">
+<h2>Config Reader<a class="headerlink" href="#config-reader" title="Permalink to this headline">¶</a></h2>
+<p>The YAML file is read by using a classmethod of the <code class="xref py py-meth docutils literal"><span class="pre">from_yaml()</span></code>.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013, TARDIS team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.5.dev2799',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

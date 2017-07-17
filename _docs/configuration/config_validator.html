@@ -1,0 +1,392 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configuration Validator &mdash; TARDIS v1.5.dev2799</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/tardis_logo.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="TARDIS v1.5.dev2799" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TARDIS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5.dev2799
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Configuration Validator</a><ul>
+<li><a class="reference internal" href="#container">Container</a></li>
+<li><a class="reference internal" href="#how-to-use">How to use</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TARDIS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Configuration Validator</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/configuration/config_validator.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+/* nice headers on first paragraph of info/warning boxes */
+.admonition .first {
+    margin: -12px;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    color: #fff;
+    line-height: 1;
+    display: block;
+}
+.admonition.warning .first {
+    background: #f0b37e;
+}
+.admonition.note .first {
+    background: #6ab0de;
+}
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<div class="section" id="configuration-validator">
+<h1>Configuration Validator<a class="headerlink" href="#configuration-validator" title="Permalink to this headline">¶</a></h1>
+<p>The default config validator takes a user configuration and a default configuration and creates a consistent and valid configuration for tardis based on the constraints given in the default configuration.  Both input data are normally given as a yaml dictionary with a consistent hierarchical structure i.e. for every item in the user configuration there has to be a declaration in the default configuration  at the same hierarchical level. This declaration can be either an unspecific empty level declaration like:
+- Main_level:</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>Second_level:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>Third_level:</dt>
+<dd>…</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<p>or a declaration of  a configuration item like:
+- item:</p>
+<blockquote>
+<div><ul class="simple">
+<li>property_type: int</li>
+<li>default: 1</li>
+<li>mandatory: True</li>
+<li>help:  ‘This is a doc string.&#8217;</li>
+</ul>
+</div></blockquote>
+<p>This contains always  the keywords help, default, mandatory, and property_type. The keyword help is  a doc-string which describes the corresponding item. Default specifies the default value which is used in case that no value for this item is specified in the corresponding user configuration item.  If the keyword mandatory is True, the item has to be specified in the user configuration.  The keyword property_type is used to specify the type of the item. At the moment, the config parser knows the following types:
+Int: The property type int is for integer like config items.
+Float: The property type float is for float like config items.
+String: The property type string is for string like config items.
+Quantity: The property type quantity is for physical quantities with units given as string. The string contains value and unit separated by a whitespace E.g. 2 cm.
+Range: The property type range specifies a range via start and end. Note: abs(start - end ) &gt; 0
+Quantity_range: Like property type range but with quantities as start and stop. The consistency of the units is checked.
+Additionally to the four standard keywords the types integer, float, and quantity can have the keywords allowed_value and allowed_type. allowed_value specifies the allowed values in a list, whereas allowed_type specifies a range of allowed values like “x&gt;10”.</p>
+<div class="section" id="container">
+<h2>Container<a class="headerlink" href="#container" title="Permalink to this headline">¶</a></h2>
+<p>For more complex configurations with dependencies, you can use the containers which allow branching in the configuration. A container is declared in the default configuration file by setting the  property_type to container property and specifying the properties of the container with keyword type. The property_type of this section is container-declaration which allows you to specify the possible container items with the keyword container. For every specified container item, the code expects the declaration of all sub items. The keywords for this are “_“ + “name of the container item”.
+If the type declaration for this container is finished you can specify all container items like normal items. Here is an example for a container configuration with two branches</p>
+<p>..source: yaml
+- container_example:</p>
+<blockquote>
+<div><ul class="simple">
+<li>property_type: container-property</li>
+<li><dl class="first docutils">
+<dt>type:</dt>
+<dd><ul class="first last">
+<li>property_type: container-declaration</li>
+<li>containers: [&#8216;one&#8217;, &#8216;two&#8217;, &#8216;three&#8217;]</li>
+<li>_one: [&#8216;one_one&#8217;, &#8216;one_two&#8217;]</li>
+<li>_two: [&#8216;two_one&#8217;]</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>one_one:</dt>
+<dd><ul class="first last">
+<li>property_type: string</li>
+<li>default: &#8216;This is a container item&#8217;</li>
+<li>mandatory: False</li>
+<li>help: This is a container item from the container one.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>one_two:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>sub_one_two_one:</dt>
+<dd><ul class="first last">
+<li>property_type: string</li>
+<li>default: &#8216;This is a container item&#8217;</li>
+<li>mandatory: False</li>
+<li>help: This is a container item from the container one.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>sub_one_two_two:</dt>
+<dd><ul class="first last">
+<li>property_type: string</li>
+<li>default: &#8216;This is a container item&#8217;</li>
+<li>mandatory: False</li>
+<li>help: This is a container item from the container one.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>two_one:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>quantity_range:</dt>
+<dd><ul class="first last">
+<li>property_type: quantity_range</li>
+<li>default: [1 m,10 cm] #[Start,End]</li>
+<li>mandatory: False</li>
+<li>help:  Like property type range but with quantities as start and stop. The consistency of the units is checked.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="how-to-use">
+<h2>How to use<a class="headerlink" href="#how-to-use" title="Permalink to this headline">¶</a></h2>
+<p>To use the default parser create a new config object form the class ConfigurationValidator by either from a dictionaries or from yaml files:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">My_config</span> <span class="o">=</span> <span class="n">ConfigurationValidator</span><span class="p">(</span><span class="n">default</span> <span class="n">configuration</span> <span class="n">dictionary</span><span class="p">,</span> <span class="n">user</span> <span class="n">configuration</span> <span class="n">dictionary</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or
+- My_config = ConfigurationValidator.from_yaml(default configuration file, user configuration file)
+To access the configuration for tardis use the method get_config</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013, TARDIS team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.5.dev2799',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

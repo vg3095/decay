@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tardis_example &mdash; TARDIS v1.5.dev2799</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/tardis_logo.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="TARDIS v1.5.dev2799" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TARDIS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5.dev2799
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">tardis_example</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TARDIS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>tardis_example</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/examples/tardis_example.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+/* nice headers on first paragraph of info/warning boxes */
+.admonition .first {
+    margin: -12px;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    color: #fff;
+    line-height: 1;
+    display: block;
+}
+.admonition.warning .first {
+    background: #f0b37e;
+}
+.admonition.note .first {
+    background: #6ab0de;
+}
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<div class="section" id="tardis-example">
+<h1>tardis_example<a class="headerlink" href="#tardis-example" title="Permalink to this headline">¶</a></h1>
+<p>The simple and fast TARDIS setup is provided by tardis_example archive which
+may be obtained from <cite>&lt;http://opensupernova.org/~ftsamis/tardis_example.tar.gz&gt;</cite>
+and which we suggest every new user of TARDIS to run
+first.</p>
+<p>It calculates a spectrum for a Type Ia supernova model 13 days after explosion,
+requesting a total output luminosity of</p>
+<div class="math">
+\[L = 10^{9.44}\, \mathrm{L}_{\odot}\]</div>
+<p>A simple power-law density profile (seventh order polynomial fit to the Nomoto
+et al. 1984 W7 model) is used together with a uniform composition, involving
+only six elements. To avoid long run times only a moderate number of real and
+virtual Monte Carlo packets are used. Also, very simple ionization and
+excitation assumptions are adopted.</p>
+<p>The following YAML file summarizes the tardis_example setup:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">tardis_config_version</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">v1.0</span>
+<span class="l l-Scalar l-Scalar-Plain">supernova</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">luminosity_requested</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">9.44 log_lsun</span>
+  <span class="l l-Scalar l-Scalar-Plain">time_explosion</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">13 day</span>
+
+<span class="l l-Scalar l-Scalar-Plain">atom_data</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">kurucz_cd23_chianti_H_He.h5</span>
+
+<span class="l l-Scalar l-Scalar-Plain">model</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">structure</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">specific</span>
+    <span class="l l-Scalar l-Scalar-Plain">velocity</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">start</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1.1e4 km/s</span>
+      <span class="l l-Scalar l-Scalar-Plain">stop</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">20000 km/s</span>
+      <span class="l l-Scalar l-Scalar-Plain">num</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
+    <span class="l l-Scalar l-Scalar-Plain">density</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">branch85_w7</span>
+  <span class="l l-Scalar l-Scalar-Plain">abundances</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">uniform</span>
+    <span class="l l-Scalar l-Scalar-Plain">O</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.19</span>
+    <span class="l l-Scalar l-Scalar-Plain">Mg</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.03</span>
+    <span class="l l-Scalar l-Scalar-Plain">Si</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.52</span>
+    <span class="l l-Scalar l-Scalar-Plain">S</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.19</span>
+    <span class="l l-Scalar l-Scalar-Plain">Ar</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.04</span>
+    <span class="l l-Scalar l-Scalar-Plain">Ca</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0.03</span>
+
+<span class="l l-Scalar l-Scalar-Plain">plasma</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">disable_electron_scattering</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span>
+  <span class="l l-Scalar l-Scalar-Plain">ionization</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">lte</span>
+  <span class="l l-Scalar l-Scalar-Plain">excitation</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">lte</span>
+  <span class="l l-Scalar l-Scalar-Plain">radiative_rates_type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">dilute-blackbody</span>
+  <span class="l l-Scalar l-Scalar-Plain">line_interaction_type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">macroatom</span>
+
+<span class="l l-Scalar l-Scalar-Plain">montecarlo</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">seed</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">23111963</span>
+  <span class="l l-Scalar l-Scalar-Plain">no_of_packets</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">4.0e+4</span>
+  <span class="l l-Scalar l-Scalar-Plain">iterations</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
+  <span class="l l-Scalar l-Scalar-Plain">black_body_sampling</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">start</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1 angstrom</span>
+    <span class="l l-Scalar l-Scalar-Plain">stop</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1000000 angstrom</span>
+    <span class="l l-Scalar l-Scalar-Plain">num</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1.e+6</span>
+  <span class="l l-Scalar l-Scalar-Plain">last_no_of_packets</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1.e+5</span>
+  <span class="l l-Scalar l-Scalar-Plain">no_of_virtual_packets</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
+
+<span class="l l-Scalar l-Scalar-Plain">spectrum</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">start</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">500 angstrom</span>
+  <span class="l l-Scalar l-Scalar-Plain">stop</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">20000 angstrom</span>
+  <span class="l l-Scalar l-Scalar-Plain">num</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10000</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Due to the low number of packets, the simplistic ionization and excitation
+treatments and the reduced abundance set, this TARDIS setup serves for
+illustrative purposes and not for detailed SNe Ia spectral synthesis
+calculations.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013, TARDIS team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.5.dev2799',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

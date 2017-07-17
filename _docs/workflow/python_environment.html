@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Python Environment for TARDIS &mdash; TARDIS v1.5.dev2799</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/tardis_logo.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="TARDIS v1.5.dev2799" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TARDIS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5.dev2799
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Python Environment for TARDIS</a><ul>
+<li><a class="reference internal" href="#using-virtualenv">Using virtualenv</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TARDIS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Python Environment for TARDIS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/workflow/python_environment.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+/* nice headers on first paragraph of info/warning boxes */
+.admonition .first {
+    margin: -12px;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    color: #fff;
+    line-height: 1;
+    display: block;
+}
+.admonition.warning .first {
+    background: #f0b37e;
+}
+.admonition.note .first {
+    background: #6ab0de;
+}
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<div class="section" id="python-environment-for-tardis">
+<h1>Python Environment for TARDIS<a class="headerlink" href="#python-environment-for-tardis" title="Permalink to this headline">¶</a></h1>
+<p>There are many ways to install the right Python packages for TARDIS. In this
+document we outline an easy way (using <a href="#id1"><span class="problematic" id="id2">`</span></a>virtualenv`s) that ensures that the
+installed packages are of the right version for TARDIS and not messing with
+other python installation on the computer.</p>
+<div class="section" id="using-virtualenv">
+<h2>Using virtualenv<a class="headerlink" href="#using-virtualenv" title="Permalink to this headline">¶</a></h2>
+<p><a href="#id3"><span class="problematic" id="id4">`virtualenv`_</span></a> is a tool for creating and activating isolated Python
+environments that allow installing and experimenting with Python packages
+without disrupting your production Python environment.  When using commands
+such as <code class="docutils literal"><span class="pre">setup.py</span> <span class="pre">develop</span></code>, for example, it is strong recommended to do
+so within a virtualenv.</p>
+<p>We won&#8217;t provide a full tutorial on using virtualenv here &#8211; the virtualenv
+documentation linked to above is a better place to start.  But here is a quick
+overview on how to set up a virtualenv for TARDIS development with your
+default Python version:</p>
+<ol class="arabic">
+<li><p class="first">Install virtualenv:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ pip install virtualenv
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ easy_install virtualenv
+</pre></div>
+</div>
+<p>or (on Debian/Ubuntu):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo apt-get install python-virtualenv
+</pre></div>
+</div>
+<p>etc.</p>
+</li>
+<li><p class="first">(Recommended) Create a root directory for all your virtualenvs under a path
+you have write access to.  For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ mkdir ~/.virtualenvs
+</pre></div>
+</div>
+</li>
+<li><p class="first">Create the TARDIS virtualenv:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ virtualenv --system-site-packages ~/.virtualenvs/tardis
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">--system-site-packages</span></code> option inherits all packages already
+installed in your system site-packages directory; this frees you from having
+to reinstall packages like Numpy and Scipy in the virtualenv.  However, if
+you would like your virtualenv to use a development version of Numpy, for
+example, you can still install Numpy into the virtualenv and it will take
+precedence over the version installed in site-packages.</p>
+<blockquote>
+<div><p>$ virtualenv ~/.virtualenvs/tardis</p>
+</div></blockquote>
+</li>
+<li><p class="first">Activate the virtualenv (this needs to be done everytime you work with TARDIS):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ source ~/.virtualenvs/tardis/bin/activate
+</pre></div>
+</div>
+<p>or if you&#8217;re using a csh as a shell:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ source ~/.virtualenvs/tardis/bin/activate.csh
+</pre></div>
+</div>
+<p>virtualenv works on Windows too &#8211; see the documentation for details.</p>
+</li>
+<li><p class="first">If the virtualenv successfully activated its name should appear in your
+shell prompt:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>(tardis) $
+</pre></div>
+</div>
+<p>The virtualenv can be disabled at any time by entering:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>(tardis) $ deactivate
+</pre></div>
+</div>
+</li>
+<li><p class="first">Now as long as the virtualenv is activated packages you install with
+<code class="docutils literal"><span class="pre">pip</span></code>, <code class="docutils literal"><span class="pre">easy_install</span></code>, or by manually running <code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span>
+<span class="pre">install</span></code> will automatically install into your virtualenv instead of the
+system site-packages. To develop it is a useful idea to install TARDIS using
+<cite>python setup.py develop</cite> - which will allow you to develop and immediately
+test it out.</p>
+<p>To install all the recommended packages:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>(tardis) $ pip install -r https://raw.githubusercontent.com/tardis-sn/tardis/master/pip-requirements
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013, TARDIS team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.5.dev2799',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

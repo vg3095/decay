@@ -1,0 +1,382 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Reporting Bugs &mdash; TARDIS v1.5.dev2799</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/tardis_logo.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="TARDIS v1.5.dev2799" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> TARDIS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5.dev2799
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Reporting Bugs</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TARDIS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Reporting Bugs</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/bugs.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+/* nice headers on first paragraph of info/warning boxes */
+.admonition .first {
+    margin: -12px;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    color: #fff;
+    line-height: 1;
+    display: block;
+}
+.admonition.warning .first {
+    background: #f0b37e;
+}
+.admonition.note .first {
+    background: #6ab0de;
+}
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<div class="section" id="reporting-bugs">
+<h1>Reporting Bugs<a class="headerlink" href="#reporting-bugs" title="Permalink to this headline">¶</a></h1>
+<p>Despite our best efforts TARDIS contains bugs. We want to make sure that fixing
+these is quick and painless for users and developers.</p>
+<p>When reporting bugs please use the mailing list
+(<a class="reference external" href="http://groups.google.com/forum/#!forum/tardis-sn-users">tardis-sn-user</a>) or
+create an issue for TARDIS on github (??? ;preferred).</p>
+<p>If there are very long ouputs needed to debug the problem, please use a website like
+<a class="reference external" href="http://pastebin.com">pastebin</a> that way it is easier for us to look through it.</p>
+<p>One of the major problems that we see are mismatches in installed versions of
+third-party libraries (that&#8217;s where virtualenvs really help -
+see <a class="reference internal" href="workflow/python_environment.html"><span class="doc">Python Environment for TARDIS</span></a>). To make sure that we can test this properly
+please tell us the installed version of third party packages. The easiest way is:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ pip freeze
+Cython==0.20.2
+Jinja2==2.7.2
+MarkupSafe==0.21
+PyYAML==3.11
+Pygments==1.6
+Sphinx==1.2.2
+astropy==1.0.dev10065
+astropy-helpers==0.4.2
+backports.ssl-match-hostname==3.4.0.2
+cov-core==1.11
+coverage==3.7.1
+docutils==0.11
+execnet==1.2.0
+h5py==2.4.0a0
+ipdb==0.8
+ipython==1.2.1
+latexcodec==0.3.2
+matplotlib==1.4.0
+mock==1.0.1
+nose==1.3.4
+numexpr==2.4
+numpy==1.9.0
+numpydoc==0.4
+oset==0.1.3
+pandas==0.14.1
+pep8==1.5.6
+py==1.4.20
+pybtex==0.17
+pybtex-docutils==0.2.0
+pyparsing==2.0.2
+pytest==2.5.2
+pytest-cache==1.0
+pytest-cov==1.6
+pytest-ipdb==0.1-prerelease
+pytest-pep8==1.0.6
+python-dateutil==2.2
+pytz==2014.7
+pyzmq==14.2.0
+scipy==0.13.3
+six==1.8.0
+sphinx-bootstrap-theme==0.4.0
+sphinxcontrib-bibtex==0.2.9
+sphinxcontrib-tikz==0.4.1
+tables==3.1.1
+tornado==3.2
+tox==1.7.1
+virtualenv==1.11.6
+wsgiref==0.1.2
+</pre></div>
+</div>
+<p>and pasting the output in your error report, this will show us what packages are
+installed and used.</p>
+<p>The next thing that is useful to do if TARDIS is downloaded in a directory is to run
+the test suites and find if any of the tests fail:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">test</span>
+<span class="n">running</span> <span class="n">test</span>
+<span class="n">running</span> <span class="n">build</span>
+<span class="n">running</span> <span class="n">build_py</span>
+<span class="n">copying</span> <span class="n">tardis</span><span class="o">/./</span><span class="n">macro_atom</span><span class="o">.</span><span class="n">c</span> <span class="o">-&gt;</span> <span class="n">build</span><span class="o">/</span><span class="n">lib</span><span class="o">.</span><span class="n">macosx</span><span class="o">-</span><span class="mf">10.9</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="mf">2.7</span><span class="o">/</span><span class="n">tardis</span><span class="o">/.</span>
+<span class="n">copying</span> <span class="n">tardis</span><span class="o">/./</span><span class="n">montecarlo</span><span class="o">.</span><span class="n">c</span> <span class="o">-&gt;</span> <span class="n">build</span><span class="o">/</span><span class="n">lib</span><span class="o">.</span><span class="n">macosx</span><span class="o">-</span><span class="mf">10.9</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="mf">2.7</span><span class="o">/</span><span class="n">tardis</span><span class="o">/.</span>
+<span class="n">running</span> <span class="n">build_ext</span>
+<span class="n">skipping</span> <span class="s1">&#39;tardis/montecarlo.c&#39;</span> <span class="n">Cython</span> <span class="n">extension</span> <span class="p">(</span><span class="n">up</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">date</span><span class="p">)</span>
+<span class="n">skipping</span> <span class="s1">&#39;tardis/macro_atom.c&#39;</span> <span class="n">Cython</span> <span class="n">extension</span> <span class="p">(</span><span class="n">up</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">date</span><span class="p">)</span>
+<span class="n">running</span> <span class="n">build_scripts</span>
+<span class="o">=============================</span> <span class="n">test</span> <span class="n">session</span> <span class="n">starts</span> <span class="o">==============================</span>
+<span class="n">platform</span> <span class="n">darwin</span> <span class="o">--</span> <span class="n">Python</span> <span class="mf">2.7</span><span class="o">.</span><span class="mi">8</span> <span class="o">--</span> <span class="n">pytest</span><span class="o">-</span><span class="mf">2.5</span><span class="o">.</span><span class="mi">1</span>
+
+<span class="n">Running</span> <span class="n">tests</span> <span class="ow">in</span> <span class="n">tardis</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">wkerzend</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">tardis</span><span class="o">/</span><span class="n">docs</span><span class="o">.</span>
+
+<span class="n">Platform</span><span class="p">:</span> <span class="n">Darwin</span><span class="o">-</span><span class="mf">13.4</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">x86_64</span><span class="o">-</span><span class="n">i386</span><span class="o">-</span><span class="mi">64</span><span class="n">bit</span>
+
+<span class="n">Executable</span><span class="p">:</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">wkerzend</span><span class="o">/.</span><span class="n">virtualenvs</span><span class="o">/</span><span class="n">tardis</span><span class="o">-</span><span class="n">devel</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python</span>
+
+<span class="n">Full</span> <span class="n">Python</span> <span class="n">Version</span><span class="p">:</span>
+<span class="mf">2.7</span><span class="o">.</span><span class="mi">8</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Oct</span> <span class="mi">15</span> <span class="mi">2014</span><span class="p">,</span> <span class="mi">22</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mi">42</span><span class="p">)</span>
+<span class="p">[</span><span class="n">GCC</span> <span class="mf">4.2</span><span class="o">.</span><span class="mi">1</span> <span class="n">Compatible</span> <span class="n">Apple</span> <span class="n">LLVM</span> <span class="mf">5.1</span> <span class="p">(</span><span class="n">clang</span><span class="o">-</span><span class="mf">503.0</span><span class="o">.</span><span class="mi">40</span><span class="p">)]</span>
+
+<span class="n">encodings</span><span class="p">:</span> <span class="n">sys</span><span class="p">:</span> <span class="n">ascii</span><span class="p">,</span> <span class="n">locale</span><span class="p">:</span> <span class="n">UTF</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="n">filesystem</span><span class="p">:</span> <span class="n">utf</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="n">unicode</span> <span class="n">bits</span><span class="p">:</span> <span class="mi">15</span>
+<span class="n">byteorder</span><span class="p">:</span> <span class="n">little</span>
+<span class="nb">float</span> <span class="n">info</span><span class="p">:</span> <span class="n">dig</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="n">mant_dig</span><span class="p">:</span> <span class="mi">15</span>
+
+<span class="n">Numpy</span><span class="p">:</span> <span class="mf">1.9</span><span class="o">.</span><span class="mi">1</span>
+<span class="n">Scipy</span><span class="p">:</span> <span class="mf">0.13</span><span class="o">.</span><span class="mi">3</span>
+<span class="n">astropy</span><span class="p">:</span> <span class="mf">1.0</span><span class="o">.</span><span class="n">dev10065</span>
+<span class="n">yaml</span><span class="p">:</span> <span class="mf">3.11</span>
+<span class="n">cython</span><span class="p">:</span> <span class="mf">0.20</span><span class="o">.</span><span class="mi">2</span>
+<span class="n">h5py</span><span class="p">:</span> <span class="mf">2.4</span><span class="o">.</span><span class="mi">0</span><span class="n">a0</span>
+<span class="n">Matplotlib</span><span class="p">:</span> <span class="mf">1.4</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">ipython</span><span class="p">:</span> <span class="mf">1.2</span><span class="o">.</span><span class="mi">1</span>
+
+<span class="n">plugins</span><span class="p">:</span> <span class="n">cache</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">ipdb</span><span class="p">,</span> <span class="n">pep8</span>
+<span class="n">collected</span> <span class="mi">107</span> <span class="n">items</span>
+
+<span class="n">tardis</span><span class="o">/</span><span class="n">io</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">test_ascii_readers</span><span class="o">.</span><span class="n">py</span> <span class="o">.......</span>
+<span class="n">tardis</span><span class="o">/</span><span class="n">io</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">test_config_reader</span><span class="o">.</span><span class="n">py</span> <span class="o">.............................</span>
+<span class="n">tardis</span><span class="o">/</span><span class="n">io</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">test_config_validator</span><span class="o">.</span><span class="n">py</span> <span class="o">........................</span>
+<span class="n">tardis</span><span class="o">/</span><span class="n">io</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">test_configuration_namespace</span><span class="o">.</span><span class="n">py</span> <span class="o">.........</span>
+<span class="n">tardis</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">test_atomic</span><span class="o">.</span><span class="n">py</span> <span class="o">.....</span><span class="n">s</span>
+<span class="n">tardis</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">test_lte_plasma</span><span class="o">.</span><span class="n">py</span> <span class="n">ssssssssss</span>
+<span class="n">tardis</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">test_plasma_nlte</span><span class="o">.</span><span class="n">py</span> <span class="o">.....</span>
+<span class="n">tardis</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">test_plasma_simple</span><span class="o">.</span><span class="n">py</span> <span class="o">.</span>
+<span class="n">tardis</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">test_tardis_full</span><span class="o">.</span><span class="n">py</span> <span class="n">s</span>
+<span class="n">tardis</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">test_util</span><span class="o">.</span><span class="n">py</span> <span class="o">...............</span>
+
+<span class="o">====================</span> <span class="mi">95</span> <span class="n">passed</span><span class="p">,</span> <span class="mi">12</span> <span class="n">skipped</span> <span class="ow">in</span> <span class="mf">8.53</span> <span class="n">seconds</span> <span class="o">=====================</span>
+</pre></div>
+</div>
+<p>This will hopefully help us to identify us the problem. We will continue to
+update this document with other techniques.</p>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013, TARDIS team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.5.dev2799',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

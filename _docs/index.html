@@ -1,0 +1,327 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tardis Core Package Documentation &mdash; TARDIS v1.5.dev2799</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/tardis_logo.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="TARDIS v1.5.dev2799" href="#"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> TARDIS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5.dev2799
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Tardis Core Package Documentation</a><ul>
+<li><a class="reference internal" href="#using-tardis">Using Tardis</a></li>
+<li><a class="reference internal" href="#looking-under-the-hood">Looking under the hood</a></li>
+<li><a class="reference internal" href="#developing-tardis">Developing Tardis</a></li>
+<li><a class="reference internal" href="#references">References</a></li>
+<li><a class="reference internal" href="#news">News</a><ul>
+<li><a class="reference internal" href="#socis-2016">SOCIS 2016</a></li>
+<li><a class="reference internal" href="#gsoc-2016">GSOC 2016</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">TARDIS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Tardis Core Package Documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+/* nice headers on first paragraph of info/warning boxes */
+.admonition .first {
+    margin: -12px;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    color: #fff;
+    line-height: 1;
+    display: block;
+}
+.admonition.warning .first {
+    background: #f0b37e;
+}
+.admonition.note .first {
+    background: #6ab0de;
+}
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<style media="screen" type="text/css">
+  h1 { display:none; }
+</style><div class="section" id="tardis-core-package-documentation">
+<h1>Tardis Core Package Documentation<a class="headerlink" href="#tardis-core-package-documentation" title="Permalink to this headline">¶</a></h1>
+<img src="_images/tardis_banner.svg" onerror="this.src='_images/tardis_banner.svg'; this.onerror=null;" width="458"/><p id="tardis">TARDIS is an open-source Monte Carlo radiative-transfer spectral synthesis code
+for 1D models of supernova ejecta. It is designed for rapid spectral modelling
+of supernovae. If you use this code for any publications or presentations please
+acknowledge it by citing <a class="reference internal" href="zreferences.html#kerzendorf2014" id="id1">[KerzendorfSim14]</a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This documentation is still under construction!</p>
+</div>
+<div class="section" id="using-tardis">
+<h2>Using Tardis<a class="headerlink" href="#using-tardis" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="installation.html"><span class="doc">Installation</span></a></li>
+<li><a class="reference internal" href="running.html"><span class="doc">Quickstart Guide</span></a></li>
+<li><a class="reference internal" href="examples/modelconfig.html"><span class="doc">Ejecta Model Setup</span></a></li>
+<li><a class="reference internal" href="configuration/index.html"><span class="doc">TARDIS Configuration</span></a></li>
+<li><a class="reference internal" href="examples/examples.html"><span class="doc">Examples</span></a></li>
+<li><a class="reference internal" href="credits.html"><span class="doc">Credit &amp; Publication Policies</span></a></li>
+</ul>
+</div>
+<div class="section" id="looking-under-the-hood">
+<h2>Looking under the hood<a class="headerlink" href="#looking-under-the-hood" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="physics/index.html"><span class="doc">Physics behind TARDIS</span></a></li>
+<li><a class="reference internal" href="montecarlo/index.html"><span class="doc">Monte Carlo Primer</span></a></li>
+</ul>
+</div>
+<div class="section" id="developing-tardis">
+<h2>Developing Tardis<a class="headerlink" href="#developing-tardis" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="issues.html"><span class="doc">Reporting Issues</span></a></li>
+<li><a class="reference internal" href="workflow/development_workflow.html"><span class="doc">How to contribute</span></a></li>
+<li><a class="reference internal" href="running_tests.html"><span class="doc">Running tests</span></a></li>
+</ul>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="zreferences.html"><span class="doc">TARDIS Papers and useful references</span></a></li>
+</ul>
+</div>
+<div class="section" id="news">
+<h2>News<a class="headerlink" href="#news" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="socis-2016">
+<h3>SOCIS 2016<a class="headerlink" href="#socis-2016" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="http://sophia.estec.esa.int/socis/"><img alt="http://sophia.estec.esa.int/socis2015/sites/default/files/images/esalogo.png" src="http://sophia.estec.esa.int/socis2015/sites/default/files/images/esalogo.png" /></a>
+<p>TARDIS is part of ESA&#8217;s Summer of Code in Space 2016 program!</p>
+</div>
+<div class="section" id="gsoc-2016">
+<h3>GSOC 2016<a class="headerlink" href="#gsoc-2016" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="https://summerofcode.withgoogle.com/organizations/4793296782098432/"><img alt="https://developers.google.com/open-source/gsoc/resources/downloads/GSoC-logo-horizontal.svg" src="https://developers.google.com/open-source/gsoc/resources/downloads/GSoC-logo-horizontal.svg" width="458px" /></a>
+<p>TARDIS has been selected as a mentoring organisation for the Google Summer of Code 2016 program!</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013, TARDIS team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.5.dev2799',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

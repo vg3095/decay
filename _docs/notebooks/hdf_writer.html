@@ -1,0 +1,641 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Example Usage of HDFWriter &mdash; TARDIS v1.5.dev2799</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/tardis_logo.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="TARDIS v1.5.dev2799" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TARDIS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5.dev2799
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Example Usage of HDFWriter</a><ul>
+<li><a class="reference internal" href="#Parameters">Parameters</a><ul>
+<li><a class="reference internal" href="#Saving-nested-class-objects.">Saving nested class objects.</a></li>
+<li><a class="reference internal" href="#Modifed-Usage">Modifed Usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TARDIS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Example Usage of HDFWriter</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/notebooks/hdf_writer.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #303F9F;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #D84315;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 8ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #f7f7f7;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.pngmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+/* nice headers on first paragraph of info/warning boxes */
+.admonition .first {
+    margin: -12px;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    color: #fff;
+    line-height: 1;
+    display: block;
+}
+.admonition.warning .first {
+    background: #f0b37e;
+}
+.admonition.note .first {
+    background: #6ab0de;
+}
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<div class="section" id="Example-Usage-of-HDFWriter">
+<h1>Example Usage of HDFWriter<a class="headerlink" href="#Example-Usage-of-HDFWriter" title="Permalink to this headline">¶</a></h1>
+<p>If properties of a class needs to be saved in a hdf file, then the class
+should inherit from <code class="docutils literal"><span class="pre">HDFWriterMixin</span></code> as demonstrated below.</p>
+<p><code class="docutils literal"><span class="pre">hdf_properties</span> <span class="pre">(list)</span></code> : Contains names of all the properties that
+needs to be saved. <code class="docutils literal"><span class="pre">hdf_name</span> <span class="pre">(str)</span></code> : Specifies the default name of
+the group under which the properties will be saved.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2"><div class="highlight"><pre>
+<span></span>from tardis.io.util import HDFWriterMixin
+
+class ExampleClass(HDFWriterMixin):
+    hdf_properties = [&#39;property1&#39;, &#39;property2&#39;]
+    hdf_name = &#39;mock_setup&#39;
+    def __init__(self, property1, property2):
+        self.property1 = property1
+        self.property2 = property2
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2"><div class="highlight"><pre>
+<span></span>import numpy as np
+import pandas as pd
+
+#Instantiating Object
+property1 = np.array([4.0e14, 2, 2e14, 27.5])
+property2 = pd.DataFrame({&#39;one&#39;: pd.Series([1., 2., 3.], index=[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]),
+                        &#39;two&#39;: pd.Series([1., 2., 3., 4.], index=[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;])})
+obj = ExampleClass(property1, property2)
+</pre></div>
+</div>
+</div>
+<p>You can now save properties using <code class="docutils literal"><span class="pre">to_hdf</span></code> method.</p>
+<div class="section" id="Parameters">
+<h2>Parameters<a class="headerlink" href="#Parameters" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">file_path</span></code> : Path where the HDF file will be saved <code class="docutils literal"><span class="pre">path</span></code> : Path
+inside the HDF store to store the <code class="docutils literal"><span class="pre">elements</span></code> <code class="docutils literal"><span class="pre">name</span></code> : Name of the
+group inside HDF store, under which properties will be saved. If not
+specified , then it uses the value specified in <code class="docutils literal"><span class="pre">hdf_name</span></code> attribute.
+If <code class="docutils literal"><span class="pre">hdf_name</span></code> is also not defined , then it converts the Class name
+into Snake Case, and uses this value. Like for example , if <code class="docutils literal"><span class="pre">name</span></code> is
+not passed as an argument , and <code class="docutils literal"><span class="pre">hdf_name</span></code> is also not defined for
+<code class="docutils literal"><span class="pre">ExampleClass</span></code> above, then , it will save properties under
+<code class="docutils literal"><span class="pre">example_class</span></code> group.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2"><div class="highlight"><pre>
+<span></span>obj.to_hdf(file_path=&#39;test.hdf&#39;, path=&#39;test&#39;)
+#obj.to_hdf(file_path=&#39;test.hdf&#39;, path=&#39;test&#39;, name=&#39;hdf&#39;)
+</pre></div>
+</div>
+</div>
+<p>You can now read hdf file using <code class="docutils literal"><span class="pre">pd.HDFStore</span></code> , or <code class="docutils literal"><span class="pre">pd.read_hdf</span></code></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2"><div class="highlight"><pre>
+<span></span>#Read HDF file
+with pd.HDFStore(&#39;test.hdf&#39;,&#39;r&#39;) as data:
+    print data
+    #print data[&#39;/test/mock_setup/property1&#39;]
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;pandas.io.pytables.HDFStore&#39;&gt;
+File path: test.hdf
+/test/mock_setup/property1            series       (shape-&gt;[4])
+/test/mock_setup/property2            frame        (shape-&gt;[4,2])
+</pre></div></div>
+</div>
+<div class="section" id="Saving-nested-class-objects.">
+<h3>Saving nested class objects.<a class="headerlink" href="#Saving-nested-class-objects." title="Permalink to this headline">¶</a></h3>
+<p>Just extend <code class="docutils literal"><span class="pre">hdf_properties</span></code> list to include that class object.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2"><div class="highlight"><pre>
+<span></span>class NestedExampleClass(HDFWriterMixin):
+    hdf_properties = [&#39;property1&#39;, &#39;nested_object&#39;]
+    def __init__(self, property1, nested_obj):
+        self.property1 = property1
+        self.nested_object = nested_obj
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2"><div class="highlight"><pre>
+<span></span>obj2 = NestedExampleClass(property1, obj)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2"><div class="highlight"><pre>
+<span></span>obj2.to_hdf(file_path=&#39;nested_test.hdf&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2"><div class="highlight"><pre>
+<span></span>#Read HDF file
+with pd.HDFStore(&#39;nested_test.hdf&#39;,&#39;r&#39;) as data:
+    print data
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;pandas.io.pytables.HDFStore&#39;&gt;
+File path: nested_test.hdf
+/nested_example_class/nested_object/property1            series       (shape-&gt;[4])
+/nested_example_class/nested_object/property2            frame        (shape-&gt;[4,2])
+/nested_example_class/property1                          series       (shape-&gt;[4])
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Modifed-Usage">
+<h3>Modifed Usage<a class="headerlink" href="#Modifed-Usage" title="Permalink to this headline">¶</a></h3>
+<p>In <code class="docutils literal"><span class="pre">BasePlasma</span></code> class, the way properties of object are collected is
+different. It does not uses <code class="docutils literal"><span class="pre">hdf_properties</span></code> attribute. That`s why ,
+<code class="docutils literal"><span class="pre">PlasmaWriterMixin</span></code> (which extends <code class="docutils literal"><span class="pre">HDFWriterMixin</span></code>) changes how the
+properties of <code class="docutils literal"><span class="pre">BasePlasma</span></code> class will be collected, by changing
+<code class="docutils literal"><span class="pre">get_properties</span></code> function.</p>
+<p>Here is a quick demonstration, if behaviour of default
+<code class="docutils literal"><span class="pre">get_properties</span></code> function inside <code class="docutils literal"><span class="pre">HDFWriterMixin</span></code> needs to be
+changed, by subclassing it to create a new <code class="docutils literal"><span class="pre">Mixin</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2"><div class="highlight"><pre>
+<span></span>class ModifiedWriterMixin(HDFWriterMixin):
+    def get_properties(self):
+        #Change behaviour here, how properties will be collected from Class
+        data = {name: getattr(self, name) for name in self.outputs}
+        return data
+</pre></div>
+</div>
+</div>
+<p>A demo class , using this modified mixin.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2"><div class="highlight"><pre>
+<span></span>class DemoClass(ModifiedWriterMixin):
+    outputs = [&#39;property1&#39;]
+    hdf_name = &#39;demo&#39;
+    def __init__(self, property1):
+        self.property1 = property1
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython2"><div class="highlight"><pre>
+<span></span>obj3 = DemoClass(&#39;random_string&#39;)
+obj3.to_hdf(&#39;demo_class.hdf&#39;)
+with pd.HDFStore(&#39;demo_class.hdf&#39;,&#39;r&#39;) as data:
+    print data
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;pandas.io.pytables.HDFStore&#39;&gt;
+File path: demo_class.hdf
+/demo/scalars            series       (shape-&gt;[1])
+</pre></div></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013, TARDIS team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.5.dev2799',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

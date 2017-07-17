@@ -1,0 +1,340 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installation &mdash; TARDIS v1.5.dev2799</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/tardis_logo.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="TARDIS v1.5.dev2799" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> TARDIS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5.dev2799
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Installation</a><ul>
+<li><a class="reference internal" href="#requirements">Requirements</a></li>
+<li><a class="reference internal" href="#installing-tardis-with-anaconda">Installing TARDIS with Anaconda</a></li>
+<li><a class="reference internal" href="#installation-troubles-faq">Installation Troubles (FAQ)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TARDIS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+/* nice headers on first paragraph of info/warning boxes */
+.admonition .first {
+    margin: -12px;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    color: #fff;
+    line-height: 1;
+    display: block;
+}
+.admonition.warning .first {
+    background: #f0b37e;
+}
+.admonition.note .first {
+    background: #6ab0de;
+}
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<div class="section" id="installation">
+<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>Before installing TARDIS, please check its <a class="reference internal" href="#requirements-label"><span class="std std-ref">requirements</span></a>. We provide instructions for installing TARDIS using</p>
+<blockquote>
+<div>Anaconda :ref:<a href="#id2"><span class="problematic" id="id3">`</span></a>guide</div></blockquote>
+<p>&lt;anaconda_inst_label&gt;`. If you encounter problems, consult the
+<a class="reference internal" href="#troubleshooting-inst-label"><span class="std std-ref">troubleshooting</span></a> section. Once you have
+installed TARDIS, check out <a class="reference internal" href="running.html"><span class="doc">Quickstart Guide</span></a> for instructions of how to perform
+simple TARDIS calculations.</p>
+<div class="section" id="requirements">
+<span id="requirements-label"></span><h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">TARDIS only works on 64-bit python installations.</p>
+</div>
+<p>You can see a list of all the requirements of TARDIS in the <a class="reference external" href="https://raw.githubusercontent.com/tardis-sn/tardis/master/tardis_env27.yml">environment definition file</a>.</p>
+<p>TARDIS is using astropy&#8217;s excellent installation helpers and thus uses similar
+instructions to astropy.</p>
+</div>
+<div class="section" id="installing-tardis-with-anaconda">
+<span id="anaconda-inst-label"></span><h2>Installing TARDIS with Anaconda<a class="headerlink" href="#installing-tardis-with-anaconda" title="Permalink to this headline">¶</a></h2>
+<p>We highly recommend using the Anaconda python environment to install TARDIS (or
+any other scientific packages for that matter). Anaconda has the advantage of
+being an isolated environment that can be set to be the default one, but by no
+means will mess with your other environments. It will also work on computers
+where <code class="docutils literal"><span class="pre">root</span></code>-rights are not available. Use these <a class="reference external" href="http://docs.continuum.io/anaconda/install.html">instructions</a> to install Anaconda on your
+machine. The next step is to create an environment for TARDIS that contains all
+of the necessary packages (this ensures that TARDIS requirements won&#8217;t clash
+with any other python installs on disc:</p>
+<p>First, download the <a class="reference external" href="https://raw.githubusercontent.com/tardis-sn/tardis/master/tardis_env27.yml">environment definition file</a> from:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">tardis</span><span class="o">-</span><span class="n">sn</span><span class="o">/</span><span class="n">tardis</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">tardis_env27</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+<p>To create the environment, change to the directory that you downloaded the environment definition file and run:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span><span class="o">-</span><span class="n">env</span> <span class="n">create</span> <span class="o">-</span><span class="n">f</span> <span class="n">tardis_env27</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+<p>Then to activate this environment simply do:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">activate</span> <span class="n">tardis</span>
+</pre></div>
+</div>
+<p>and after you are done with TARDIS you can deactivate:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">deactivate</span>
+</pre></div>
+</div>
+<p>One does not need to recreate the environment, but simply activate it every time
+TARDIS is used.</p>
+<p>Since TARDIS has reached a mature state, we recommend always installing the latest development version:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">tardis</span><span class="o">-</span><span class="n">sn</span><span class="o">/</span><span class="n">tardis</span>
+</pre></div>
+</div>
+<p>To install the latest stable version of TARDIS simply do (usually outdated):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">tardis</span><span class="o">-</span><span class="n">sn</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="installation-troubles-faq">
+<span id="troubleshooting-inst-label"></span><h2>Installation Troubles (FAQ)<a class="headerlink" href="#installation-troubles-faq" title="Permalink to this headline">¶</a></h2>
+<p>We highly encourage with any installation problems to try the recommended install
+method because this often fix problems. Here are some common problems when
+installing and their fixes:</p>
+<p><strong>Problem:</strong> While building tardis via <code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span></code> build you
+may encounter the following error:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">error</span><span class="p">:</span> <span class="n">tardis</span><span class="o">/</span><span class="n">montecarlo</span><span class="o">/</span><span class="n">montecarlo</span><span class="o">.</span><span class="n">c</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">find</span> <span class="n">C</span> <span class="n">file</span> <span class="n">tardis</span><span class="o">/</span><span class="n">montecarlo</span><span class="o">/</span><span class="n">montecarlo</span><span class="o">.</span><span class="n">c</span> <span class="k">for</span> <span class="n">Cython</span> <span class="n">file</span> <span class="n">tardis</span><span class="o">/</span><span class="n">montecarlo</span><span class="o">/</span><span class="n">montecarlo</span><span class="o">.</span><span class="n">pyx</span> <span class="n">when</span> <span class="n">building</span> <span class="n">extension</span> <span class="n">tardis</span><span class="o">.</span><span class="n">montecarlo</span><span class="o">.</span><span class="n">montecarlo</span><span class="o">.</span> <span class="n">Cython</span> <span class="n">must</span> <span class="n">be</span> <span class="n">installed</span> <span class="n">to</span> <span class="n">build</span> <span class="kn">from</span> <span class="nn">a</span> <span class="n">git</span> <span class="n">checkout</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Solution:</strong> There are several solutions to this problem. A clean checkout will
+help. To clean up your repository please try <code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">clean</span></code> and
+then <code class="docutils literal"><span class="pre">git</span> <span class="pre">clean</span> <span class="pre">-dfx</span></code> (<strong>WARNING</strong> will delete any non tardis file in that directory)
+This will often clean this problem. If it still persists:</p>
+<p>Go into the tardis/montecarlo directory and build montecarlo.c by hand:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cython</span> <span class="n">montecarlo</span><span class="o">.</span><span class="n">pyx</span>
+</pre></div>
+</div>
+<p>Then, <code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">build</span></code> should run without problems.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013, TARDIS team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.5.dev2799',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
