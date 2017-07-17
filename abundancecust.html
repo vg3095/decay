@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Using a custom stratified composition &mdash; TARDIS v1.5.dev2798</title>
+  <title>Using a custom stratified composition &mdash; TARDIS v1.5.dev2799</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="TARDIS v1.5.dev2798" href="../index.html"/> 
+    <link rel="top" title="TARDIS v1.5.dev2799" href="../index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                1.5.dev2798
+                1.5.dev2799
               </div>
             
           
@@ -97,6 +97,7 @@
 <li><a class="reference internal" href="#tardis-ascii-input-file">TARDIS ascii input file</a></li>
 <li><a class="reference internal" href="#csv-format">CSV Format</a></li>
 <li><a class="reference internal" href="#tardis-csv-input-file">TARDIS csv input file</a></li>
+<li><a class="reference internal" href="#convert-ascii-abundance-file-format-to-csv-format">Convert ascii abundance file format to csv format</a></li>
 </ul>
 </li>
 </ul>
@@ -268,7 +269,7 @@ the model section of the yaml file:</p>
 be specified on a per-cell basis via an external csv file. A csv file that could
 work on a mesh with ten cells should be formatted like this:</p>
 <table border="1" class="docutils" id="id1">
-<caption><span class="caption-text">Config Example</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">Example</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="20%" />
 <col width="20%" />
@@ -381,6 +382,16 @@ the model section of the yaml file:</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="convert-ascii-abundance-file-format-to-csv-format">
+<h2>Convert ascii abundance file format to csv format<a class="headerlink" href="#convert-ascii-abundance-file-format-to-csv-format" title="Permalink to this headline">¶</a></h2>
+<p>If you want to convert an ASCII abundance file(say &#8220;abund.dat&#8221;) to CSV format, you can use
+<code class="code docutils literal"><span class="pre">convert_abundances_format</span></code> function for it. Here is an example to demonstrate this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tardis.util</span> <span class="kn">import</span> <span class="n">convert_abundances_format</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">convert_abundances_format</span><span class="p">(</span><span class="s1">&#39;abund.dat&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;converted_abund.csv&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -418,7 +429,7 @@ the model section of the yaml file:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'1.5.dev2798',
+            VERSION:'1.5.dev2799',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
