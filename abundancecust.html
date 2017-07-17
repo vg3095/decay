@@ -1,0 +1,461 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using a custom stratified composition &mdash; TARDIS v1.5.dev2799</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/tardis_logo.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="TARDIS v1.5.dev2799" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TARDIS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.5.dev2799
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Using a custom stratified composition</a><ul>
+<li><a class="reference internal" href="#ascii-format">ASCII Format</a></li>
+<li><a class="reference internal" href="#tardis-ascii-input-file">TARDIS ascii input file</a></li>
+<li><a class="reference internal" href="#csv-format">CSV Format</a></li>
+<li><a class="reference internal" href="#tardis-csv-input-file">TARDIS csv input file</a></li>
+<li><a class="reference internal" href="#convert-ascii-abundance-file-format-to-csv-format">Convert ascii abundance file format to csv format</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TARDIS</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Using a custom stratified composition</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/examples/abundancecust.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+/* nice headers on first paragraph of info/warning boxes */
+.admonition .first {
+    margin: -12px;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    color: #fff;
+    line-height: 1;
+    display: block;
+}
+.admonition.warning .first {
+    background: #f0b37e;
+}
+.admonition.note .first {
+    background: #6ab0de;
+}
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<div class="section" id="using-a-custom-stratified-composition">
+<h1>Using a custom stratified composition<a class="headerlink" href="#using-a-custom-stratified-composition" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="ascii-format">
+<h2>ASCII Format<a class="headerlink" href="#ascii-format" title="Permalink to this headline">¶</a></h2>
+<p>To use a stratified ejecta composition in TARDIS, the elemental abundances may
+be specified on a per-cell basis via an external ascii file (similar to setting
+up a <a class="reference internal" href="densitycust.html"><span class="doc">custom density</span></a> profile). An ascii file that could
+work on a mesh with ten cells should be formatted like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># index Z=1 - Z=30</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.1</span> <span class="mi">0</span> <span class="mf">0.1</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mf">0.1</span> <span class="mf">0.1</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.1</span> <span class="mi">0</span> <span class="mf">0.1</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mf">0.1</span> <span class="mf">0.1</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">2</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.1</span> <span class="mi">0</span> <span class="mf">0.1</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mf">0.1</span> <span class="mf">0.1</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">3</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.1</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mf">0.1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">4</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.1</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mf">0.1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">5</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.1</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mf">0.1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">6</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.1</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mf">0.1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">7</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.1</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mf">0.2</span> <span class="mi">0</span> <span class="mf">0.1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">8</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.5</span> <span class="mi">0</span> <span class="mf">0.5</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
+<span class="mi">9</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.5</span> <span class="mi">0</span> <span class="mf">0.5</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>In this file:</p>
+<ul class="simple">
+<li>there should be the same number of rows as there are cells specified in the velocity/density structure part of the TARDIS setup</li>
+<li>each row contains 31 numbers, the first of which is the index (i.e. matching the zone to the density profile file)</li>
+<li>the remaining 30 entries in each row give the set of elemental abundances for atomic number Z=1 to Z=30 (in order)</li>
+</ul>
+<p>The abundances are specified as mass fractions (i.e. the sum of columns 1 to 30
+in each row should be 1.0).  TARDIS does not currently include any elements
+heavier that Z=30.  The mass fractions specified will be adopted directly in
+the TARDIS calculations - so if your model is e.g. based on an explosion
+simulation you may need to calculate the state of any radioactive decay chains
+at the correct epoch.</p>
+<p>The example file shown here has three simple layers:</p>
+<ul class="simple">
+<li>an innermost region (indices 0 to 2) that is composed of Si (Z=14), S (Z=16), Ar (Z=18), Ca (Z=20), Fe (Z=26), Co (Z=27) and Ni (Z=28)</li>
+<li>a middle region (indices 3 to 7) that is composed of O (Z=8), Mg (Z=12), Si, S, Ar and Ca</li>
+<li>an outer region (indices 8 and 9) that is composed of C (Z=6) and O.</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The example given here is to show the format only. It is not a
+realistic model. In any real calculation better resolution
+(i.e. more grid points) should be used.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The calculation can be no better / more complete than the atomic
+data set. For further information on the atomic database -
+including details of how to develop your own dataset to suit your
+needs, please contact us.</p>
+</div>
+</div>
+<div class="section" id="tardis-ascii-input-file">
+<h2>TARDIS ascii input file<a class="headerlink" href="#tardis-ascii-input-file" title="Permalink to this headline">¶</a></h2>
+<p>If you create a correctly formatted abundance profile file (called &#8220;abund.dat&#8221;
+in this example), you can use it in TARDIS by putting the following lines in
+the model section of the yaml file:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">model</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">abundances</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">file</span>
+        <span class="l l-Scalar l-Scalar-Plain">filename</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">abund.dat</span>
+        <span class="l l-Scalar l-Scalar-Plain">filetype</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">simple_ascii</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="csv-format">
+<h2>CSV Format<a class="headerlink" href="#csv-format" title="Permalink to this headline">¶</a></h2>
+<p>In this format, both elemental and isotopic abundances may
+be specified on a per-cell basis via an external csv file. A csv file that could
+work on a mesh with ten cells should be formatted like this:</p>
+<table border="1" class="docutils" id="id1">
+<caption><span class="caption-text">Example</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">C</th>
+<th class="head">Mg</th>
+<th class="head">Si</th>
+<th class="head">Ni56</th>
+<th class="head">Ni58</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>0</td>
+<td>0.1</td>
+<td>0.1</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>0</td>
+<td>0</td>
+<td>0.1</td>
+<td>0.1</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>0</td>
+<td>0</td>
+<td>0.1</td>
+<td>0</td>
+<td>0.1</td>
+</tr>
+<tr class="row-odd"><td>0</td>
+<td>0.1</td>
+<td>0.2</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>0</td>
+<td>0.1</td>
+<td>0.2</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>0</td>
+<td>0.1</td>
+<td>0.2</td>
+<td>0</td>
+<td>0.1</td>
+</tr>
+<tr class="row-even"><td>0</td>
+<td>0.1</td>
+<td>0.2</td>
+<td>0</td>
+<td>0.6</td>
+</tr>
+<tr class="row-odd"><td>0</td>
+<td>0.1</td>
+<td>0.2</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>0.5</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>0.5</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>In this file:</p>
+<ul class="simple">
+<li>Header row contains element and isotopes symbol</li>
+<li>the remaining entries in each row give the set of elemental and isotopic abundances.</li>
+</ul>
+<p>The abundances are specified as mass fractions (i.e. the sum of columns
+in each row should be 1.0). The mass fractions specified will be adopted directly in
+the TARDIS calculations.</p>
+<p>The example file shown here has three simple layers:</p>
+<ul class="simple">
+<li>an innermost region that is composed of Si and two Nickel Isotopes Ni56 and Ni58</li>
+<li>a middle region that is composed of Mg</li>
+<li>an outer region that is composed of C.</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The example given here is to show the format only. It is not a
+realistic model. In any real calculation better resolution
+(i.e. more grid points) should be used.</p>
+</div>
+</div>
+<div class="section" id="tardis-csv-input-file">
+<h2>TARDIS csv input file<a class="headerlink" href="#tardis-csv-input-file" title="Permalink to this headline">¶</a></h2>
+<p>If you create a correctly formatted abundance profile file (called &#8220;tardis_model_abund.csv&#8221;
+in this example), you can use it in TARDIS by putting the following lines in
+the model section of the yaml file:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">model</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">abundances</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">file</span>
+        <span class="l l-Scalar l-Scalar-Plain">filename</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">tardis_model_abund.csv</span>
+        <span class="l l-Scalar l-Scalar-Plain">filetype</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">tardis_model</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="convert-ascii-abundance-file-format-to-csv-format">
+<h2>Convert ascii abundance file format to csv format<a class="headerlink" href="#convert-ascii-abundance-file-format-to-csv-format" title="Permalink to this headline">¶</a></h2>
+<p>If you want to convert an ASCII abundance file(say &#8220;abund.dat&#8221;) to CSV format, you can use
+<code class="code docutils literal"><span class="pre">convert_abundances_format</span></code> function for it. Here is an example to demonstrate this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tardis.util</span> <span class="kn">import</span> <span class="n">convert_abundances_format</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">convert_abundances_format</span><span class="p">(</span><span class="s1">&#39;abund.dat&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;converted_abund.csv&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013, TARDIS team.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.5.dev2799',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
